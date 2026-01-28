@@ -1,7 +1,9 @@
 package kr.jimin.test.repository
 
 import kr.jimin.test.domain.Member
+import org.springframework.stereotype.Repository
 
+@Repository
 class MemoryMemberRepository : MemberRepository {
 
     companion object {

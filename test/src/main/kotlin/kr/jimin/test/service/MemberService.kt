@@ -2,7 +2,9 @@ package kr.jimin.test.service
 
 import kr.jimin.test.domain.Member
 import kr.jimin.test.repository.MemberRepository
+import org.springframework.stereotype.Service
 
+@Service
 class MemberService(
     private val memberRepository: MemberRepository
 ) {
