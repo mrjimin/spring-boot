@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository
 class MemoryMemberRepository : MemberRepository {
 
     companion object {
-        val store: MutableMap<Long, Member> = hashMapOf()
-        var sequence: Long = 0L
+        private val store: MutableMap<Long, Member> = hashMapOf()
+        private var sequence: Long = 0L
     }
 
     override fun save(member: Member): Member =

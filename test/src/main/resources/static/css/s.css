@@ -1,0 +1,85 @@
+:root {
+    --trans: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 0.4s ease;
+    background-color: #f0f0f0; /* 기본 라이트 배경 */
+}
+
+/* 다크모드 배경색 */
+body:has(.checkbox:checked) {
+    background-color: #102770;
+}
+
+.checkbox { display: none; }
+
+/* 토글 트랙 */
+.label {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 28px;
+    background-color: #ffeba7;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--trans);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 움직이는 원형 버튼 */
+.ball {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 40px;
+    height: 40px;
+    background-color: #102770;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--trans);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 아이콘 공통 */
+.ball svg {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    transition: var(--trans);
+}
+
+.sun-icon { color: #ffeba7; opacity: 1; transform: rotate(0); }
+.moon-icon { color: #102770; opacity: 0; transform: rotate(-120deg); }
+
+/* --- 체크 상태 애니메이션 --- */
+
+/* 1. 트랙 색상 변경 */
+.checkbox:checked + .label {
+    background-color: #444;
+}
+
+/* 2. 버튼 이동 및 색상 변경 */
+.checkbox:checked + .label .ball {
+    transform: translateX(36px);
+    background-color: #ffeba7;
+}
+
+/* 3. 해 사라지기 */
+.checkbox:checked + .label .sun-icon {
+    opacity: 0;
+    transform: rotate(120deg);
+}
+
+/* 4. 달 나타나기 */
+.checkbox:checked + .label .moon-icon {
+    opacity: 1;
+    transform: rotate(0);
+}
